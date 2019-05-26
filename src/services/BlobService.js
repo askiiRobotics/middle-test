@@ -10,23 +10,25 @@
 
 import RNFetchBlob from 'rn-fetch-blob';
 
-const CachedDictionary = []
-export const BlobService = {
-    // we do not save cache from session to session because it is temporary storage
+const CachedDictionary: Array<any> = [];
+const BlobService = {
+  // we do not save cache from session to session because it is temporary storage
 
-    getFilePath: async function (uri: string): Promise<any> {
-      let result: string = CachedDictionary[uri];
-      if (result) {
-        return result;
-      }
-
-      const res = await RNFetchBlob.config({
-        fileCache: true,
-      }).fetch('GET', uri);
-      const filePath = res.path();
-      result = `file://${filePath}`;
-      CachedDictionary.push(uri, result);
-
+  getFilePath: async function (uri: string): Promise<any> {
+    let result: string = CachedDictionary[uri];
+    if (result) {
       return result;
     }
-}
+
+    const res = await RNFetchBlob.config({
+      fileCache: true,
+    }).fetch('GET', uri);
+    const filePath = res.path();
+    result = `file://${filePath}`;
+    CachedDictionary.push(uri, result);
+
+    return result;
+  }
+};
+
+export default BlobService;

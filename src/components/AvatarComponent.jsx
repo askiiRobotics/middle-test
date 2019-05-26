@@ -34,11 +34,14 @@ const styles = StyleSheet.create({
     height: 62,
     width: 62,
   },
+  row: {
+    flex: 1,
+  }
 });
 
 type Props = {
-  onChange: (input: string) => void, 
-  onAvatarPicked: (image: any) => Promise, 
+  onChange: (input: string) => void,
+  value: String,
 };
 
 const pickerConfig = { 
