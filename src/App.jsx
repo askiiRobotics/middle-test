@@ -4,12 +4,12 @@
  * @format
  * @flow
  */
-"use strict";
+'use strict';
 
-import React from "react";
-import { PersistGate } from "redux-persist/integration/react";
-import { Provider } from "react-redux";
-import RootComponent from "middle/src/containers/RootComponent";
+import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import RootComponent from 'middle/src/containers/RootComponent';
 import { persistor, store } from 'middle/src/store/store';
 
 

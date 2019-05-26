@@ -4,10 +4,10 @@
  * @format
  * @flow
  */
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
-import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
+import React, { Component } from 'react';
+import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import BlobService from 'middle/src/services/BlobService';
 
@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
   },
   // eslint-disable-next-line react-native/no-color-literals
   imageLibraryText: {
-    color: "#0088CC",
+    color: '#0088CC',
     marginLeft: 18
   },
   // eslint-disable-next-line react-native/no-color-literals
   photoIcon: {
-    borderColor: "#0088CC",
+    borderColor: '#0088CC',
     borderRadius: 32,
     borderWidth: 2,
     height: 62,

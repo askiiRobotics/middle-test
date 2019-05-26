@@ -44,17 +44,17 @@ class RootComponent extends Component<Props> {
     return (
       <ScrollView style={styles.container}>
         <Toolbar
-            leftElement="arrow-back"
-            centerElement=""
+            leftElement='arrow-back'
+            centerElement=''
         />
-        <Subheader text="Edit Profile" inset />
-        <Field name="avatar" component={AvatarComponent} />
-        <Field name="first-name" component={this.textField} />
-        <Field name="last-name" component={this.textField} />
-        <Field name="phone" component={this.phoneField} />
-        <Field name="email" component={this.emailField} />
-        <Field name="telegram" component={this.getSocialInput('telegram')} /> 
-        <Button value="Save" onPress={handleSubmit(this.submit)} />
+        <Subheader text='Edit Profile' inset />
+        <Field name='avatar' component={AvatarComponent} />
+        <Field name='first-name' component={this.textField} />
+        <Field name='last-name' component={this.textField} />
+        <Field name='phone' component={this.phoneField} />
+        <Field name='email' component={this.emailField} />
+        <Field name='telegram' component={this.getSocialInput('telegram')} /> 
+        <Button value='Save' onPress={handleSubmit(this.submit)} />
       </ScrollView>
     );
   }
