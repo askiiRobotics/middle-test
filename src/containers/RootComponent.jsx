@@ -77,7 +77,7 @@ class RootComponent extends Component<Props> {
 
   emailField = (props) => <TextInput {...props} keyboardType={'email-address'}/>;
 
-  telegramInput = (props) => <TextInput {...props} RightSection={this.connectBtn}/>; 
+  telegramInput = (props) => <TextInput {...props} RightSectionComponent={this.connectBtn}/>; 
   // it is capable to use twitter keyboard type here
 
   connectBtn = () => <Text>Connect</Text>;
