@@ -49,10 +49,10 @@ class RootComponent extends Component<Props> {
         />
         <Subheader text='Edit Profile' inset />
         <Field name='avatar' component={AvatarComponent} />
-        <Field name='first-name' component={this.textField} />
-        <Field name='last-name' component={this.textField} />
-        <Field name='phone' component={this.phoneField} />
-        <Field name='email' component={this.emailField} />
+        <Field name='first-name' component={this.textField({label: 'First Name'})} />
+        <Field name='last-name' component={this.textField({label: 'Last Name'})} />
+        <Field name='phone' component={this.phoneField({label: 'Phone'})} />
+        <Field name='email' component={this.emailField({label: 'Email'})} />
         <Field name='telegram' component={this.getSocialInput('telegram')} /> 
         <Button value='Save' onPress={handleSubmit(this.submit)} />
       </ScrollView>
@@ -62,27 +62,25 @@ class RootComponent extends Component<Props> {
   getSocialInput(type: SocialType) {
     switch(type) {
       case 'telegram':
-        return this.telegramInput;
+        return this.textField({label: 'Telegram', RightSectionComponent: this.connectBtn});
+        // it is capable to use twitter keyboard type here
       default: 
-        return this.defaultInput;
+        return this.defaultInput();
     }
   }
 
   // TODO: move to separated file
-  textField = (props) => <TextInput {...props}/>;
+  textField = (props) => (formProps) => <TextInput {...formProps} {...props}/>;
 
-  numericField = (props) => <TextInput {...props} keyboardType={'numeric'}/>;
+  numericField = (props) => (formProps) => <TextInput {...formProps} {...props} keyboardType={'numeric'}/>;
 
-  phoneField = (props) => <TextInput {...props} keyboardType={'phone-pad'}/>;
+  phoneField = (props) => (formProps) => <TextInput {...formProps} {...props} keyboardType={'phone-pad'}/>;
 
-  emailField = (props) => <TextInput {...props} keyboardType={'email-address'}/>;
-
-  telegramInput = (props) => <TextInput {...props} RightSectionComponent={this.connectBtn}/>; 
-  // it is capable to use twitter keyboard type here
+  emailField = (props) => (formProps) => <TextInput {...formProps} {...props} keyboardType={'email-address'}/>;
 
   connectBtn = () => <Text>Connect</Text>;
 
-  defaultInput = () => <View />;
+  defaultInput = () => () => <View />;
 }
 
 export default connect(RootComponentSelector)(reduxForm({
