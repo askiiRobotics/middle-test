@@ -12,13 +12,7 @@ import ReactNative from 'react-native';
 import type {
   ____Styles_Internal as StyleProp,
 } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
-import TextField from 'react-native-md-textinput';
-// import type {
-//   TextStyleProp,
-// } from 'react-native/Libraries/StyleSheet/StyleSheet';
-
-// TODO: use input from react-native-md-textinput with styles
-// TODO: add option to insert element on the right side
+import { TextField } from 'react-native-material-textfield';
 
 type Props = {
   input: ElementProps<typeof ReactNative.TextInput> & {
@@ -42,14 +36,18 @@ const styles: StyleProp = ReactNative.StyleSheet.create({
   }
 });
 
-const TextInput: StatelessFunctionalComponent<Props> = ({ input: { 
+const TextInput: StatelessFunctionalComponent<Props> = ({ 
+      input: { 
           onChange, 
-          RightSectionComponent, 
           ...restInput 
-        }}) => {
+        },
+      RightSectionComponent,
+      ...restProps
+      }) => {
+          
     return (
       <ReactNative.View style={styles.inputContainer}>
-        <TextField style={styles.input} onChangeText={onChange} {...restInput} />
+        <TextField style={styles.input} onChangeText={onChange} {...restInput} {...restProps} />
         {
           RightSectionComponent ?
           (
