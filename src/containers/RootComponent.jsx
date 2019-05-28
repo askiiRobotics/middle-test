@@ -18,6 +18,9 @@ import { formIdList, SOCIAL_TYPES } from 'middle/src/predefined/constants';
 
 
 const styles = StyleSheet.create({
+  commonContainer: {
+    flex: 1,
+  },
   container: {
     alignItems: 'center',
     flex: 1,
@@ -42,7 +45,7 @@ class RootComponent extends Component<Props> {
     const { handleSubmit } = this.props;
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.commonContainer} contentContainerStyle={styles.container}>
         <Toolbar
             leftElement='arrow-back'
             centerElement=''
@@ -54,7 +57,7 @@ class RootComponent extends Component<Props> {
         <Field name='phone' component={this.phoneField({label: 'Phone'})} />
         <Field name='email' component={this.emailField({label: 'Email'})} />
         <Field name='telegram' component={this.getSocialInput('telegram')} /> 
-        <Button value='Save' onPress={handleSubmit(this.submit)} />
+        <Button text='Save' onPress={handleSubmit(this.submit)} />
       </ScrollView>
     );
   }
