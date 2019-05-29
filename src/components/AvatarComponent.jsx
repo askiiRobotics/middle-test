@@ -17,14 +17,11 @@ import BlobService from 'middle/src/services/BlobService';
 const styles = StyleSheet.create({
   imageLibraryButton: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
   // eslint-disable-next-line react-native/no-color-literals
   imageLibraryText: {
     color: '#0088CC',
-    marginLeft: 18
+    marginLeft: 16
   },
   // eslint-disable-next-line react-native/no-color-literals
   photoIcon: {
@@ -36,6 +33,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   }
 });
 
