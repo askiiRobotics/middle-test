@@ -7,7 +7,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, SafeAreaView } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import TextInput from 'middle/src/components/TextInput';
 import AvatarComponent from 'middle/src/components/AvatarComponent';
@@ -50,13 +50,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 32,
   },
-  subminBtn: {
+  submitBtn: {
     backgroundColor: primaryColor,
     borderRadius: 4,
     height: 48,
-    marginTop: 63,
   },
-  subminBtnContent: {
+  submitBtnContent: {
     color: btnTextColor,
     fontSize: 16,
     fontWeight: 'normal',
@@ -95,7 +94,7 @@ class RootComponent extends Component<Props> {
     const { handleSubmit } = this.props;
 
     return (
-      <View style={styles.commonContainer}>
+      <SafeAreaView style={styles.commonContainer}>
         <Toolbar
             leftElement='arrow-back'
             centerElement=''
@@ -115,12 +114,14 @@ class RootComponent extends Component<Props> {
           <Field name='phone' component={this.phoneField({label: 'Phone'})} />
           <Field name='email' component={this.emailField({label: 'Email'})} />
           <Field name='telegram' component={this.getSocialInput('telegram')} /> 
-          <Button raised primary upperCase={false} text='Save' onPress={handleSubmit(this.submit)} style={{
-            container: styles.subminBtn,
-            text: styles.subminBtnContent,
-          }}/>
         </ScrollView>
-      </View>
+        <View style={styles.container}>
+          <Button raised primary upperCase={false} text='Save' onPress={handleSubmit(this.submit)} style={{
+            container: styles.submitBtn,
+            text: styles.submitBtnContent,
+          }}/>
+        </View>
+      </SafeAreaView>
     );
   }
 
