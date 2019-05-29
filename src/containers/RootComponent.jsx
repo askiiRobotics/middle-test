@@ -16,16 +16,48 @@ import { connect } from 'react-redux';
 import { Button, Subheader, Toolbar } from 'react-native-material-ui';
 import { formIdList, SOCIAL_TYPES } from 'middle/src/predefined/constants';
 
+// TODO: move colors to configurable palette
+const primaryColor = '#0088CC';
+const backgroundColor = 'white';
+const mainTextColor = 'black';
+const transparent = 'transparent';
 
 const styles = StyleSheet.create({
   commonContainer: {
+    backgroundColor: backgroundColor,
     flex: 1,
+  },
+  connectBtn: {
+    color: primaryColor,
+    fontSize: 16,  //TODO: create typography table
+    height: 24,
+    paddingLeft: 8,
+    paddingTop: 6,
   },
   container: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
+    marginHorizontal: 16,
   },
+  header: {
+    justifyContent: 'flex-start',
+    paddingLeft: 0,
+  },
+  headerContent: {
+    color: mainTextColor,
+  },
+  toolbar: {
+    backgroundColor: backgroundColor,
+    // TODO: use own implementation of getPlatformElevation util
+    elevation: 0,
+    marginHorizontal: 2,
+    shadowColor: transparent,
+    shadowOffset: {},
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    zIndex: 0,
+  },
+  toolbarContent: {
+    color: primaryColor,
+  }
 });
 
 type Props = {
@@ -45,20 +77,29 @@ class RootComponent extends Component<Props> {
     const { handleSubmit } = this.props;
 
     return (
-      <ScrollView style={styles.commonContainer} contentContainerStyle={styles.container}>
+      <View style={styles.commonContainer}>
         <Toolbar
             leftElement='arrow-back'
             centerElement=''
+            style={{
+              container: styles.toolbar,
+              leftElement: styles.toolbarContent,
+            }}
         />
-        <Subheader text='Edit Profile' inset />
-        <Field name='avatar' component={AvatarComponent} />
-        <Field name='first-name' component={this.textField({label: 'First Name'})} />
-        <Field name='last-name' component={this.textField({label: 'Last Name'})} />
-        <Field name='phone' component={this.phoneField({label: 'Phone'})} />
-        <Field name='email' component={this.emailField({label: 'Email'})} />
-        <Field name='telegram' component={this.getSocialInput('telegram')} /> 
-        <Button text='Save' onPress={handleSubmit(this.submit)} />
-      </ScrollView>
+        <ScrollView style={styles.commonContainer} contentContainerStyle={styles.container}>
+          <Subheader text='Edit Profile' style={{
+              container: styles.header,
+              text: styles.headerContent,
+          }} />
+          <Field name='avatar' component={AvatarComponent} />
+          <Field name='first-name' component={this.textField({label: 'First Name'})} />
+          <Field name='last-name' component={this.textField({label: 'Last Name'})} />
+          <Field name='phone' component={this.phoneField({label: 'Phone'})} />
+          <Field name='email' component={this.emailField({label: 'Email'})} />
+          <Field name='telegram' component={this.getSocialInput('telegram')} /> 
+          <Button text='Save' onPress={handleSubmit(this.submit)} />
+        </ScrollView>
+      </View>
     );
   }
 
@@ -81,7 +122,12 @@ class RootComponent extends Component<Props> {
 
   emailField = (props) => (formProps) => <TextInput {...formProps} {...props} keyboardType={'email-address'}/>;
 
-  connectBtn = () => <Text>Connect</Text>;
+  connectBtn = () => <Text style={styles.connectBtn}>Connect</Text>; 
+  // TODO: make clickable and add additional props to make it worked properly
+  // example:
+  // accessible={true}
+  // accessibilityTraits={'button'}
+  // hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
 
   defaultInput = () => () => <View />;
 }
