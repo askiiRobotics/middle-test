@@ -39,6 +39,8 @@ const styles: StyleProp = ReactNative.StyleSheet.create({
   },
   labelTextStyle: {
     color: baseColor,
+    letterSpacing: 0.5,
+    fontWeight: 'normal',
   }
 });
 

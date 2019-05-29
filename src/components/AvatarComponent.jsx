@@ -14,18 +14,19 @@ import BlobService from 'middle/src/services/BlobService';
 
 // TODO: use i18n localization
 
+const primaryColor = '#0088CC';
+
 const styles = StyleSheet.create({
   imageLibraryButton: {
     flex: 1,
   },
-  // eslint-disable-next-line react-native/no-color-literals
   imageLibraryText: {
-    color: '#0088CC',
-    marginLeft: 16
+    color: primaryColor,
+    letterSpacing: 0.25,
+    marginLeft: 16,
   },
-  // eslint-disable-next-line react-native/no-color-literals
   photoIcon: {
-    borderColor: '#0088CC',
+    borderColor: primaryColor,
     borderRadius: 32,
     borderWidth: 2,
     height: 62,

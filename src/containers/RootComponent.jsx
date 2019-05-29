@@ -18,6 +18,7 @@ import { formIdList, SOCIAL_TYPES } from 'middle/src/predefined/constants';
 
 // TODO: move colors to configurable palette
 const primaryColor = '#0088CC';
+const btnTextColor = '#EBEDEE';
 const backgroundColor = 'white';
 const mainTextColor = 'black';
 const transparent = 'transparent';
@@ -31,18 +32,35 @@ const styles = StyleSheet.create({
     color: primaryColor,
     fontSize: 16,  //TODO: create typography table
     height: 24,
+    letterSpacing: 0.25,
     paddingLeft: 8,
     paddingTop: 6,
   },
   container: {
     marginHorizontal: 16,
+    paddingBottom: 16,
   },
   header: {
     justifyContent: 'flex-start',
+    marginTop: 4,
     paddingLeft: 0,
   },
   headerContent: {
     color: mainTextColor,
+    fontSize: 24,
+    lineHeight: 32,
+  },
+  subminBtn: {
+    backgroundColor: primaryColor,
+    borderRadius: 4,
+    height: 48,
+    marginTop: 63,
+  },
+  subminBtnContent: {
+    color: btnTextColor,
+    fontSize: 16,
+    fontWeight: 'normal',
+    letterSpacing: 0.25
   },
   toolbar: {
     backgroundColor: backgroundColor,
@@ -97,7 +115,10 @@ class RootComponent extends Component<Props> {
           <Field name='phone' component={this.phoneField({label: 'Phone'})} />
           <Field name='email' component={this.emailField({label: 'Email'})} />
           <Field name='telegram' component={this.getSocialInput('telegram')} /> 
-          <Button text='Save' onPress={handleSubmit(this.submit)} />
+          <Button raised primary upperCase={false} text='Save' onPress={handleSubmit(this.submit)} style={{
+            container: styles.subminBtn,
+            text: styles.subminBtnContent,
+          }}/>
         </ScrollView>
       </View>
     );
