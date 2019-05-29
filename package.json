@@ -7,7 +7,7 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:bundle": "node node_modules/react-native/local-cli/cli.js bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-    "ios:bundle": "node node_modules/react-native/local-cli/cli.js bundle --entry-file='index.js' --bundle-output='./ios/GBookingMedlineApp/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "ios:bundle": "node node_modules/react-native/local-cli/cli.js bundle --entry-file='index.js' --bundle-output='./ios/middle/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
     "test": "jest"
   },
   "dependencies": {
